@@ -40,6 +40,24 @@ func main() {
 
 	if jogador.Vida > 0 {
 		subirDeNivel(&jogador)
+		fmt.Println("\nNo fim do coliseu você encontra uma sombra a espreita, você sente uma força sem igual vinda dela...")
+		fmt.Print("Você avança? (s/n): ")
+		var final string
+		fmt.Scan(&final)
+
+		if final != "s" {
+			fmt.Println("Você volta para casa com um pensamento de derrota, não importa os desafios que você venceu, no final o medo ainda te alcançou...")
+			return
+		}
+
+		fmt.Println("Então você decidiu avançar humano, que assim seja...")
+		time.Sleep(2 * time.Second)
+		batalhar(&jogador, &Player{"Dragão das profundezas", 280, 30, 15, 5})
+
+	}
+
+	if jogador.Vida > 0 {
+		subirDeNivel(&jogador)
 		fmt.Println("\nVocê conquistou o Coliseu! Todos aclamam seu nome!")
 	}
 }
@@ -78,7 +96,7 @@ func batalhar(jogador, inimigo *Player) {
 	}
 
 	if jogador.Vida <= 0 {
-		fmt.Println("\n Você foi derrotado no Coliseu.")
+		fmt.Println("\nVocê foi derrotado no Coliseu.")
 	} else {
 		fmt.Printf("\n%s derrotou %s!\n", jogador.Nome, inimigo.Nome)
 	}
